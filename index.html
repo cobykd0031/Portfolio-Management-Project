@@ -18,17 +18,19 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #f0fdf4; /* green-50 for scrollbar track to match light green theme */
         }
         ::-webkit-scrollbar-thumb {
-            background: #6b7280; /* gray-500 */
+            background: #4ade80; /* green-400 for scrollbar thumb */
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #4b5563; /* gray-600 */
+            background: #22c55e; /* green-500 for scrollbar thumb hover */
         }
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1200x400/1E3A8A/FFFFFF?text=T%C4%83ng+Tr%C6%B0%E1%BB%9Fng+B%E1%BB%81n+V%E1%BB%AFng');
+            background-color: #166534; /* Màu nền xanh đậm cố định (giống màu của placeholder) */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); /* Lớp phủ gradient tối */
+            /* background-size và background-position ít quan trọng hơn khi không có ảnh, nhưng có thể giữ lại */
             background-size: cover;
             background-position: center;
         }
@@ -37,13 +39,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px dashed #cbd5e1; /* Tailwind's gray-300 */
-            color: #64748b; /* Tailwind's slate-500 */
+            border: 2px dashed #a7f3d0; /* Tailwind's green-200 */
+            color: #065f46; /* Tailwind's green-800 */
         }
         .team-member-image-placeholder {
             width: 128px; /* w-32 */
             height: 128px; /* h-32 */
-            background-color: #e5e7eb; /* bg-gray-200 */
+            background-color: #dcfce7; /* bg-green-100 */
             border-radius: 9999px; /* rounded-full */
             margin-left: auto;
             margin-right: auto;
@@ -51,8 +53,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px dashed #cbd5e1;
-            color: #64748b;
+            border: 2px dashed #a7f3d0; /* green-200 */
+            color: #065f46; /* green-800 */
         }
         .tab-button {
             padding: 0.75rem 1.5rem;
@@ -60,47 +62,60 @@
             border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
             font-weight: 500;
-            color: #4b5563; /* gray-600 */
+            color: #374151; /* gray-700 */
         }
         .tab-button:hover {
-            border-bottom-color: #3b82f6; /* blue-500 */
-            color: #1e3a8a; /* darker blue */
+            border-bottom-color: #22c55e; /* green-500 */
+            color: #15803d; /* green-700 */
         }
         .tab-button.active {
-            border-bottom-color: #1e40af; /* blue-700 */
-            color: #1e3a8a; /* darker blue */
+            border-bottom-color: #166534; /* green-800 */
+            color: #15803d; /* green-700 */
             font-weight: 600;
         }
         .stock-analysis-content, .main-content-section {
-            display: none; /* Ẩn tất cả các phần nội dung chính và tab phân tích ban đầu */
+            display: none;
         }
         .main-content-section.active, .stock-analysis-content.active {
-            display: block; /* Chỉ hiển thị phần active */
+            display: block;
         }
         .nav-link.active {
-            background-color: #1e3a8a; /* Màu nền đậm hơn cho nav link active */
+            background-color: #166534; /* green-800 for active nav link */
             color: white;
         }
+        header { /* Adjusted header gradient for green theme */
+            background-image: linear-gradient(to right, #15803d, #16a34a); /* green-700 to green-600 */
+        }
+        #mobile-menu { /* Adjusted mobile menu for green theme */
+            background-color: #15803d; /* green-700 */
+        }
+        .nav-link:hover, #mobile-menu .nav-link:hover { /* Adjusted hover for green theme */
+            background-color: #16a34a; /* green-600 */
+        }
+
         main {
-            flex-grow: 1; /* Đảm bảo main content chiếm không gian còn lại */
+            flex-grow: 1;
+        }
+        footer { /* Adjusted footer for green theme */
+            background-color: #064e3b; /* green-900 */
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-green-100 text-gray-800">
 
-    <header class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white shadow-lg sticky top-0 z-50">
+    <header class="text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0">
                     <a href="#" id="logo-link" class="text-2xl sm:text-3xl font-bold">EverGrow Capital</a>
                 </div>
                 <nav class="hidden md:flex space-x-1">
-                    <a href="#tong-quan" data-target="tong-quan" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Tổng quan</a>
-                    <a href="#khach-hang" data-target="khach-hang" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Khách hàng</a>
-                    <a href="#doi-ngu-phan-tich" data-target="doi-ngu-phan-tich" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Đội ngũ phân tích</a>
-                    <a href="#danh-muc-dau-tu" data-target="danh-muc-dau-tu" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Danh mục đầu tư</a>
-                    <a href="#phan-tich-co-phieu" data-target="phan-tich-co-phieu" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Phân tích cổ phiếu</a>
-                    <a href="#cong-cu" data-target="cong-cu" class="nav-link px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Công cụ & Tài nguyên</a>
+                    <a href="#tong-quan" data-target="tong-quan" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Tổng quan</a>
+                    <a href="#khach-hang" data-target="khach-hang" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Khách hàng</a>
+                    <a href="#doi-ngu-phan-tich" data-target="doi-ngu-phan-tich" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Đội ngũ phân tích</a>
+                    <a href="#danh-muc-dau-tu" data-target="danh-muc-dau-tu" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Danh mục đầu tư</a>
+                    <a href="#phan-tich-co-phieu" data-target="phan-tich-co-phieu" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Phân tích cổ phiếu</a>
+                    <a href="#cong-cu" data-target="cong-cu" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Công cụ & Tài nguyên</a>
                 </nav>
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-white hover:text-gray-300 focus:outline-none focus:text-gray-300">
@@ -111,34 +126,38 @@
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-indigo-800">
-            <a href="#tong-quan" data-target="tong-quan" class="nav-link block px-4 py-3 text-base font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Tổng quan</a>
-            <a href="#khach-hang" data-target="khach-hang" class="nav-link block px-4 py-3 text-base font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Khách hàng</a>
-            <a href="#doi-ngu-phan-tich" data-target="doi-ngu-phan-tich" class="nav-link block px-4 py-3 text-base font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Đội ngũ phân tích</a>
-            <a href="#danh-muc-dau-tu" data-target="danh-muc-dau-tu" class="nav-link block px-4 py-3 text-base font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Danh mục đầu tư</a>
-            <a href="#phan-tich-co-phieu" data-target="phan-tich-co-phieu" class="nav-link block px-4 py-3 text-base font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Phân tích cổ phiếu</a>
-            <a href="#cong-cu" data-target="cong-cu" class="nav-link block px-4 py-3 text-base font-medium hover:bg-indigo-700 transition duration-150 ease-in-out">Công cụ & Tài nguyên</a>
+        <div id="mobile-menu" class="md:hidden hidden">
+            <a href="#tong-quan" data-target="tong-quan" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Tổng quan</a>
+            <a href="#khach-hang" data-target="khach-hang" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Khách hàng</a>
+            <a href="#doi-ngu-phan-tich" data-target="doi-ngu-phan-tich" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Đội ngũ phân tích</a>
+            <a href="#danh-muc-dau-tu" data-target="danh-muc-dau-tu" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Danh mục đầu tư</a>
+            <a href="#phan-tich-co-phieu" data-target="phan-tich-co-phieu" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Phân tích cổ phiếu</a>
+            <a href="#cong-cu" data-target="cong-cu" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Công cụ & Tài nguyên</a>
         </div>
     </header>
 
     <section id="hero-section" class="hero-section text-white py-16 sm:py-24 main-content-section active">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">Đầu Tư Thông Minh, Tăng Trưởng Bền Vững</h2>
-            <p class="text-md sm:text-lg mb-6 max-w-2xl mx-auto">EverGrow Capital đồng hành cùng bạn trên hành trình xây dựng một tương lai tài chính vững mạnh.</p>
-            <a href="#tong-quan" data-target="tong-quan" class="nav-link-hero bg-green-500 hover:bg-green-400 text-gray-900 font-bold py-3 px-6 rounded-lg text-md transition duration-300 ease-in-out transform hover:scale-105">Tìm Hiểu Thêm</a>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+                Đầu tư thông minh,<br class="hidden sm:block"> Tăng trưởng bền vững
+            </h2>
+            <p class="text-md sm:text-lg mt-2 mb-8 max-w-2xl mx-auto">
+                EverGrow Capital đồng hành cùng bạn trên hành trình xây dựng một tương lai tài chính vững mạnh.
+            </p>
+            <a href="#tong-quan" data-target="tong-quan" class="nav-link-hero bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg text-md transition duration-300 ease-in-out transform hover:scale-105">Tìm Hiểu Thêm</a>
         </div>
     </section>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
 
         <section id="tong-quan" class="main-content-section mb-12 sm:mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-blue-600 pb-3">Tổng Quan về EverGrow Capital</h2>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Tổng Quan về EverGrow Capital</h2>
             <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <h3 class="text-xl sm:text-2xl font-semibold text-blue-700 mb-4">Về Chúng Tôi</h3>
+                <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-4">Về Chúng Tôi</h3>
                 <p class="text-gray-600 leading-relaxed mb-4">
                     [Nơi điền thông tin giới thiệu về công ty EverGrow Capital: sứ mệnh, tầm nhìn, giá trị cốt lõi, lịch sử hình thành (nếu có) và những gì làm nên sự khác biệt của công ty.]
                 </p>
-                <h3 class="text-xl sm:text-2xl font-semibold text-blue-700 mb-4">Triết Lý & Chiến Lược Đầu Tư Dài Hạn</h3>
+                <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-4">Triết Lý & Chiến Lược Đầu Tư Dài Hạn</h3>
                 <p class="text-gray-600 leading-relaxed mb-3">
                     Tại EverGrow Capital, chúng tôi tin tưởng vào sức mạnh của đầu tư dài hạn, tập trung vào các doanh nghiệp có nền tảng vững chắc và tiềm năng tăng trưởng bền vững. Triết lý của chúng tôi dựa trên:
                 </p>
@@ -159,7 +178,7 @@
             <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Khách Hàng Tiêu Biểu</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="image-placeholder w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4">Ảnh Khách Hàng</div>
+                    <div class="image-placeholder w-32 h-32 rounded-full mx-auto mb-4">Ảnh Khách Hàng</div>
                     <h3 class="text-xl font-semibold text-green-700 mb-2">[Họ và Tên Khách Hàng]</h3>
                     <p class="text-gray-600 text-sm mb-1">[Chức danh/Nghề nghiệp Khách Hàng]</p>
                     <p class="text-gray-500 text-xs italic">"[Trích dẫn ngắn hoặc nhận xét của khách hàng]"</p>
@@ -168,12 +187,12 @@
                     </p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="image-placeholder w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4">Ảnh Khách Hàng</div>
+                    <div class="image-placeholder w-32 h-32 rounded-full mx-auto mb-4">Ảnh Khách Hàng</div>
                     <h3 class="text-xl font-semibold text-green-700 mb-2">[Placeholder: Tên KH 2]</h3>
                     <p class="text-gray-600 leading-relaxed">[Placeholder: Thông tin KH 2]</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="image-placeholder w-32 h-32 bg-gray-200 rounded-full mx-auto mb-4">Ảnh Khách Hàng</div>
+                    <div class="image-placeholder w-32 h-32 rounded-full mx-auto mb-4">Ảnh Khách Hàng</div>
                     <h3 class="text-xl font-semibold text-green-700 mb-2">[Placeholder: Tên KH 3]</h3>
                     <p class="text-gray-600 leading-relaxed">[Placeholder: Thông tin KH 3]</p>
                 </div>
@@ -181,58 +200,26 @@
         </section>
 
         <section id="doi-ngu-phan-tich" class="main-content-section mb-12 sm:mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-cyan-600 pb-3">Đội Ngũ Phân Tích Chuyên Nghiệp</h2>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Đội Ngũ Phân Tích Chuyên Nghiệp</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
+                {/* Card thành viên mẫu, lặp lại 7 lần */}
+                {[...Array(7)].map((_, i) => (
+                <div key={i} class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
                     <div class="team-member-image-placeholder">Ảnh 128x128</div>
-                    <h3 class="text-xl font-semibold text-cyan-700 mb-1">[Họ và Tên Thành Viên 1]</h3>
+                    <h3 class="text-xl font-semibold text-green-700 mb-1">[Họ và Tên Thành Viên {i+1}]</h3>
                     <p class="text-gray-600 text-sm">Tuổi: [Tuổi]</p>
                     <p class="text-gray-500 text-sm italic">[Chức vụ]</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="team-member-image-placeholder">Ảnh 128x128</div>
-                    <h3 class="text-xl font-semibold text-cyan-700 mb-1">[Họ và Tên Thành Viên 2]</h3>
-                    <p class="text-gray-600 text-sm">Tuổi: [Tuổi]</p>
-                    <p class="text-gray-500 text-sm italic">[Chức vụ]</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="team-member-image-placeholder">Ảnh 128x128</div>
-                    <h3 class="text-xl font-semibold text-cyan-700 mb-1">[Họ và Tên Thành Viên 3]</h3>
-                    <p class="text-gray-600 text-sm">Tuổi: [Tuổi]</p>
-                    <p class="text-gray-500 text-sm italic">[Chức vụ]</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="team-member-image-placeholder">Ảnh 128x128</div>
-                    <h3 class="text-xl font-semibold text-cyan-700 mb-1">[Họ và Tên Thành Viên 4]</h3>
-                    <p class="text-gray-600 text-sm">Tuổi: [Tuổi]</p>
-                    <p class="text-gray-500 text-sm italic">[Chức vụ]</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="team-member-image-placeholder">Ảnh 128x128</div>
-                    <h3 class="text-xl font-semibold text-cyan-700 mb-1">[Họ và Tên Thành Viên 5]</h3>
-                    <p class="text-gray-600 text-sm">Tuổi: [Tuổi]</p>
-                    <p class="text-gray-500 text-sm italic">[Chức vụ]</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="team-member-image-placeholder">Ảnh 128x128</div>
-                    <h3 class="text-xl font-semibold text-cyan-700 mb-1">[Họ và Tên Thành Viên 6]</h3>
-                    <p class="text-gray-600 text-sm">Tuổi: [Tuổi]</p>
-                    <p class="text-gray-500 text-sm italic">[Chức vụ]</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="team-member-image-placeholder">Ảnh 128x128</div>
-                    <h3 class="text-xl font-semibold text-cyan-700 mb-1">[Họ và Tên Thành Viên 7]</h3>
-                    <p class="text-gray-600 text-sm">Tuổi: [Tuổi]</p>
-                    <p class="text-gray-500 text-sm italic">[Chức vụ]</p>
-                </div>
+                ))}
             </div>
         </section>
 
         <section id="danh-muc-dau-tu" class="main-content-section mb-12 sm:mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-purple-600 pb-3">Danh Mục Đầu Tư Mẫu</h2>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Danh Mục Đầu Tư Mẫu</h2>
             <div class="space-y-10">
+                {/* Mã Cổ Phiếu 1 */}
                 <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-purple-700 mb-4">[Tên Mã Cổ Phiếu 1 - Ví dụ: ABC]</h3>
+                    <h3 class="text-2xl font-semibold text-green-700 mb-4">[Tên Mã Cổ Phiếu 1 - Ví dụ: ABC]</h3>
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <h4 class="text-lg font-semibold text-gray-700 mb-2">Đặc điểm nổi bật:</h4>
@@ -249,13 +236,14 @@
                     </div>
                     <h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">Biểu đồ so sánh với Trung bình Ngành:</h4>
                     <div class="grid md:grid-cols-3 gap-4">
-                        <div class="chart-placeholder bg-gray-200 p-4 rounded text-center text-gray-600">Biểu đồ ROA của [Mã ABC] và TB ngành</div>
-                        <div class="chart-placeholder bg-gray-200 p-4 rounded text-center text-gray-600">Biểu đồ P/E của [Mã ABC] và TB ngành</div>
-                        <div class="chart-placeholder bg-gray-200 p-4 rounded text-center text-gray-600">Biểu đồ Vốn hóa của [Mã ABC] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ ROA của [Mã ABC] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ P/E của [Mã ABC] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Vốn hóa của [Mã ABC] và TB ngành</div>
                     </div>
                 </div>
-                 <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-purple-700 mb-4">[Tên Mã Cổ Phiếu 2 - Ví dụ: XYZ]</h3>
+                {/* Mã Cổ Phiếu 2 */}
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold text-green-700 mb-4">[Tên Mã Cổ Phiếu 2 - Ví dụ: XYZ]</h3>
                      <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <h4 class="text-lg font-semibold text-gray-700 mb-2">Đặc điểm nổi bật:</h4>
@@ -272,13 +260,14 @@
                     </div>
                     <h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">Biểu đồ so sánh với Trung bình Ngành:</h4>
                     <div class="grid md:grid-cols-3 gap-4">
-                        <div class="chart-placeholder bg-gray-200 p-4 rounded text-center text-gray-600">Biểu đồ ROA của [Mã XYZ] và TB ngành</div>
-                        <div class="chart-placeholder bg-gray-200 p-4 rounded text-center text-gray-600">Biểu đồ P/E của [Mã XYZ] và TB ngành</div>
-                        <div class="chart-placeholder bg-gray-200 p-4 rounded text-center text-gray-600">Biểu đồ Vốn hóa của [Mã XYZ] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ ROA của [Mã XYZ] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ P/E của [Mã XYZ] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Vốn hóa của [Mã XYZ] và TB ngành</div>
                     </div>
                 </div>
+                {/* Mã Cổ Phiếu 3 */}
                 <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-purple-700 mb-4">[Tên Mã Cổ Phiếu 3 - Ví dụ: QWE]</h3>
+                    <h3 class="text-2xl font-semibold text-green-700 mb-4">[Tên Mã Cổ Phiếu 3 - Ví dụ: QWE]</h3>
                      <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <h4 class="text-lg font-semibold text-gray-700 mb-2">Đặc điểm nổi bật:</h4>
@@ -295,9 +284,9 @@
                     </div>
                     <h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">Biểu đồ so sánh với Trung bình Ngành:</h4>
                     <div class="grid md:grid-cols-3 gap-4">
-                        <div class="chart-placeholder bg-gray-200 p-4 rounded text-center text-gray-600">Biểu đồ ROA của [Mã QWE] và TB ngành</div>
-                        <div class="chart-placeholder bg-gray-200 p-4 rounded text-center text-gray-600">Biểu đồ P/E của [Mã QWE] và TB ngành</div>
-                        <div class="chart-placeholder bg-gray-200 p-4 rounded text-center text-gray-600">Biểu đồ Vốn hóa của [Mã QWE] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ ROA của [Mã QWE] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ P/E của [Mã QWE] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Vốn hóa của [Mã QWE] và TB ngành</div>
                     </div>
                 </div>
             </div>
@@ -315,52 +304,52 @@
                 </div>
 
                 <div id="stockAnalysis1" class="stock-analysis-content active">
-                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Phân tích chi tiết cho [Mã CP 1]</h3>
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 1]</h3>
                     <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 1...]</p>
-                    <div class="chart-placeholder bg-gray-200 p-4 my-4 rounded text-center text-gray-600">Biểu đồ/bảng phân tích chính cho Mã CP 1</div>
+                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 1</div>
                 </div>
                 <div id="stockAnalysis2" class="stock-analysis-content">
-                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Phân tích chi tiết cho [Mã CP 2]</h3>
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 2]</h3>
                     <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 2...]</p>
-                    <div class="chart-placeholder bg-gray-200 p-4 my-4 rounded text-center text-gray-600">Biểu đồ/bảng phân tích chính cho Mã CP 2</div>
+                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 2</div>
                 </div>
                 <div id="stockAnalysis3" class="stock-analysis-content">
-                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Phân tích chi tiết cho [Mã CP 3]</h3>
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 3]</h3>
                      <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 3...]</p>
-                     <div class="chart-placeholder bg-gray-200 p-4 my-4 rounded text-center text-gray-600">Biểu đồ/bảng phân tích chính cho Mã CP 3</div>
+                     <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 3</div>
                 </div>
                 <div id="stockAnalysis4" class="stock-analysis-content">
-                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Phân tích chi tiết cho [Mã CP 4]</h3>
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 4]</h3>
                     <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 4...]</p>
-                    <div class="chart-placeholder bg-gray-200 p-4 my-4 rounded text-center text-gray-600">Biểu đồ/bảng phân tích chính cho Mã CP 4</div>
+                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 4</div>
                 </div>
                 <div id="stockAnalysis5" class="stock-analysis-content">
-                    <h3 class="text-xl font-semibold text-yellow-700 mb-3">Phân tích chi tiết cho [Mã CP 5]</h3>
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 5]</h3>
                     <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 5...]</p>
-                    <div class="chart-placeholder bg-gray-200 p-4 my-4 rounded text-center text-gray-600">Biểu đồ/bảng phân tích chính cho Mã CP 5</div>
+                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 5</div>
                 </div>
             </div>
         </section>
 
         <section id="cong-cu" class="main-content-section">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-teal-500 pb-3">Công Cụ và Tài Nguyên</h2>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Công Cụ và Tài Nguyên</h2>
             <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 space-y-6">
                 <div>
-                    <h3 class="text-xl sm:text-2xl font-semibold text-teal-700 mb-2">vnstock</h3>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-2">vnstock</h3>
                     <p class="text-gray-600 leading-relaxed mb-2">
                         [Giới thiệu ngắn về vnstock...]
                     </p>
                     <a href="[Link vnstock]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Tìm hiểu thêm về vnstock &rarr;</a>
                 </div>
                 <div>
-                    <h3 class="text-xl sm:text-2xl font-semibold text-teal-700 mb-2">FiinPro</h3>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-2">FiinPro</h3>
                     <p class="text-gray-600 leading-relaxed mb-2">
                         [Giới thiệu ngắn về FiinPro...]
                     </p>
                     <a href="[Link FiinPro]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Khám phá FiinPro &rarr;</a>
                 </div>
                 <div>
-                    <h3 class="text-xl sm:text-2xl font-semibold text-teal-700 mb-2">Python & Jupyter Notebook</h3>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-2">Python & Jupyter Notebook</h3>
                     <p class="text-gray-600 leading-relaxed mb-2">
                         [Giới thiệu ngắn về Python & Jupyter Notebook...]
                     </p>
@@ -370,7 +359,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-xl sm:text-2xl font-semibold text-teal-700 mb-2">Tài Liệu Tham Khảo Khác</h3>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-2">Tài Liệu Tham Khảo Khác</h3>
                     <ul class="list-disc list-inside text-gray-600 space-y-1">
                         <li><a href="[Link tài liệu 1]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">[Tên tài liệu tham khảo 1]</a></li>
                         <li><a href="[Link tài liệu 2]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">[Tên tài liệu tham khảo 2]</a></li>
@@ -380,7 +369,7 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-gray-300 text-center p-8 mt-auto">
+    <footer class="text-gray-300 text-center p-8 mt-auto">
         <p>&copy; <span id="currentYear"></span> EverGrow Capital. Mọi quyền được bảo lưu.</p>
         <p class="text-sm mt-2">Thông tin trên trang này chỉ mang tính chất tham khảo.</p>
     </footer>
