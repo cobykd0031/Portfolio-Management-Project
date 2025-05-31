@@ -13,92 +13,151 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        /* Custom scrollbar for webkit browsers */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #f0fdf4; /* green-50 for scrollbar track to match light green theme */
+            background: #f0fdf4;
         }
         ::-webkit-scrollbar-thumb {
-            background: #4ade80; /* green-400 for scrollbar thumb */
+            background: #4ade80;
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #22c55e; /* green-500 for scrollbar thumb hover */
+            background: #22c55e;
         }
         .hero-section {
-            background-color: #166534; /* Màu nền xanh đậm cố định (giống màu của placeholder) */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); /* Lớp phủ gradient tối */
-            /* background-size và background-position ít quan trọng hơn khi không có ảnh, nhưng có thể giữ lại */
+            background-color: #166534; /* Màu nền dự phòng nếu ảnh không tải được */
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), /* Lớp phủ gradient tối (ở trên cùng) */
+                url('z6641897271243_5fa3bec8c8a825c2d9f7ad196329897b.jpg'); /* ĐƯỜNG DẪN TƯƠNG ĐỐI ĐẾN ẢNH CỦA BẠN */
             background-size: cover;
             background-position: center;
         }
-        .chart-placeholder, .image-placeholder {
-            min-height: 200px;
+        .chart-placeholder, .image-placeholder, .team-member-image-placeholder-card { /* Gộp chung cho placeholder ảnh card */
+            min-height: 128px; /* Cho team member card */
+            max-height: 128px;
+            width: 128px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px dashed #a7f3d0; /* Tailwind's green-200 */
-            color: #065f46; /* Tailwind's green-800 */
-        }
-        .team-member-image-placeholder {
-            width: 128px; /* w-32 */
-            height: 128px; /* h-32 */
-            background-color: #dcfce7; /* bg-green-100 */
+            border: 2px dashed #a7f3d0;
+            color: #065f46;
+            background-color: #dcfce7;
             border-radius: 9999px; /* rounded-full */
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 1rem; /* mb-4 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed #a7f3d0; /* green-200 */
-            color: #065f46; /* green-800 */
+            margin-bottom: 1rem;
         }
+        .chart-placeholder { /* Riêng cho chart nếu cần kích thước khác */
+             min-height: 200px;
+             width: 100%;
+             border-radius: 0.5rem; /* rounded-lg */
+        }
+
         .tab-button {
             padding: 0.75rem 1.5rem;
             cursor: pointer;
             border-bottom: 3px solid transparent;
             transition: all 0.3s ease;
             font-weight: 500;
-            color: #374151; /* gray-700 */
+            color: #374151;
         }
         .tab-button:hover {
-            border-bottom-color: #22c55e; /* green-500 */
-            color: #15803d; /* green-700 */
+            border-bottom-color: #22c55e;
+            color: #15803d;
         }
         .tab-button.active {
-            border-bottom-color: #166534; /* green-800 */
-            color: #15803d; /* green-700 */
+            border-bottom-color: #166534;
+            color: #15803d;
             font-weight: 600;
         }
-        .stock-analysis-content, .main-content-section {
+        .main-content-section {
             display: none;
         }
-        .main-content-section.active, .stock-analysis-content.active {
+        .main-content-section.active {
             display: block;
         }
         .nav-link.active {
-            background-color: #166534; /* green-800 for active nav link */
+            background-color: #166534;
             color: white;
         }
-        header { /* Adjusted header gradient for green theme */
-            background-image: linear-gradient(to right, #15803d, #16a34a); /* green-700 to green-600 */
+        header {
+            background-image: linear-gradient(to right, #15803d, #16a34a);
         }
-        #mobile-menu { /* Adjusted mobile menu for green theme */
-            background-color: #15803d; /* green-700 */
+        #mobile-menu {
+            background-color: #15803d;
         }
-        .nav-link:hover, #mobile-menu .nav-link:hover { /* Adjusted hover for green theme */
-            background-color: #16a34a; /* green-600 */
+        .nav-link:hover, #mobile-menu .nav-link:hover {
+            background-color: #16a34a;
         }
-
         main {
             flex-grow: 1;
         }
-        footer { /* Adjusted footer for green theme */
-            background-color: #064e3b; /* green-900 */
+        footer {
+            background-color: #064e3b;
         }
+        .text-3d-effect {
+            text-shadow:
+                1px 1px 0px rgba(0,0,0,0.4),
+                2px 2px 0px rgba(0,0,0,0.3),
+                3px 3px 0px rgba(0,0,0,0.2),
+                4px 4px 0px rgba(0,0,0,0.1),
+                5px 5px 3px rgba(0,0,0,0.3);
+        }
+
+        /* ===== CSS CHUNG CHO HIỆU ỨNG TRƯỢT PANEL CHI TIẾT ===== */
+        .detail-section-container { /* Áp dụng cho #khach-hang và #doi-ngu-phan-tich */
+            position: relative;
+            overflow-x: hidden; 
+            min-height: 500px; 
+        }
+        .list-view-panel, .detail-view-panel { /* Class chung cho list và detail view */
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+        .detail-view-panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 30; 
+            overflow-y: auto; 
+            padding: 1.5rem; /* p-6 */
+        }
+        .detail-view-panel.hidden-detail-panel {
+            transform: translateX(100%);
+            opacity: 0;
+            display: none; 
+        }
+        .detail-view-panel.visible-detail-panel {
+            display: block; 
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .list-view-panel.hidden-list-panel {
+            transform: translateX(-100%);
+            opacity: 0.2; 
+        }
+        .list-view-panel.visible-list-panel {
+            transform: translateX(0);
+            opacity: 1;
+            display: block; 
+        }
+        .clickable-card { 
+            cursor: pointer;
+        }
+        .detail-image-actual { 
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 0.5rem; /* rounded-lg */
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        /* ======================================================= */
     </style>
 </head>
 <body class="bg-green-100 text-gray-800">
@@ -110,12 +169,12 @@
                     <a href="#" id="logo-link" class="text-2xl sm:text-3xl font-bold">EverGrow Capital</a>
                 </div>
                 <nav class="hidden md:flex space-x-1">
-                    <a href="#tong-quan" data-target="tong-quan" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Tổng quan</a>
-                    <a href="#khach-hang" data-target="khach-hang" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Khách hàng</a>
-                    <a href="#doi-ngu-phan-tich" data-target="doi-ngu-phan-tich" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Đội ngũ phân tích</a>
-                    <a href="#danh-muc-dau-tu" data-target="danh-muc-dau-tu" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Danh mục đầu tư</a>
-                    <a href="#phan-tich-co-phieu" data-target="phan-tich-co-phieu" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Phân tích cổ phiếu</a>
-                    <a href="#cong-cu" data-target="cong-cu" class="nav-link px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Công cụ & Tài nguyên</a>
+                    <a href="#tong-quan" data-target="tong-quan" class="nav-link px-3 py-2 rounded-md text-sm font-bold transition duration-150 ease-in-out">Tổng quan</a>
+                    <a href="#khach-hang" data-target="khach-hang" class="nav-link px-3 py-2 rounded-md text-sm font-bold transition duration-150 ease-in-out">Khách hàng</a>
+                    <a href="#doi-ngu-phan-tich" data-target="doi-ngu-phan-tich" class="nav-link px-3 py-2 rounded-md text-sm font-bold transition duration-150 ease-in-out">Đội ngũ phân tích</a>
+                    <a href="#danh-muc-dau-tu" data-target="danh-muc-dau-tu" class="nav-link px-3 py-2 rounded-md text-sm font-bold transition duration-150 ease-in-out">Dịch vụ</a>
+                    <a href="#phan-tich-co-phieu" data-target="phan-tich-co-phieu" class="nav-link px-3 py-2 rounded-md text-sm font-bold transition duration-150 ease-in-out">Phân tích cổ phiếu</a>
+                    <a href="#cong-cu" data-target="cong-cu" class="nav-link px-3 py-2 rounded-md text-sm font-bold transition duration-150 ease-in-out">Công cụ & Tài nguyên</a>
                 </nav>
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="text-white hover:text-gray-300 focus:outline-none focus:text-gray-300">
@@ -127,7 +186,7 @@
             </div>
         </div>
         <div id="mobile-menu" class="md:hidden hidden">
-            <a href="#tong-quan" data-target="tong-quan" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Tổng quan</a>
+            <a href="#tong-quan" data-target="tong-quan" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out"><b>Tổng quan</b></a>
             <a href="#khach-hang" data-target="khach-hang" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Khách hàng</a>
             <a href="#doi-ngu-phan-tich" data-target="doi-ngu-phan-tich" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Đội ngũ phân tích</a>
             <a href="#danh-muc-dau-tu" data-target="danh-muc-dau-tu" class="nav-link block px-4 py-3 text-base font-medium transition duration-150 ease-in-out">Danh mục đầu tư</a>
@@ -138,195 +197,304 @@
 
     <section id="hero-section" class="hero-section text-white py-16 sm:py-24 main-content-section active">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+            <h2 class="text-3d-effect text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
                 Đầu tư thông minh,<br class="hidden sm:block"> Tăng trưởng bền vững
             </h2>
             <p class="text-md sm:text-lg mt-2 mb-8 max-w-2xl mx-auto">
                 EverGrow Capital đồng hành cùng bạn trên hành trình xây dựng một tương lai tài chính vững mạnh.
             </p>
             <a href="#tong-quan" data-target="tong-quan" class="nav-link-hero bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold py-3 px-6 rounded-lg text-md transition duration-300 ease-in-out transform hover:scale-105">Tìm Hiểu Thêm</a>
+            <a href="#danh-muc-dau-tu" onclick="event.preventDefault(); setActiveSection('danh-muc-dau-tu');" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold py-3 px-6 rounded-lg transition duration-300">Xem danh mục mẫu</a>
         </div>
     </section>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
 
         <section id="tong-quan" class="main-content-section mb-12 sm:mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Tổng Quan về EverGrow Capital</h2>
+             <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Tổng Quan về EverGrow Capital</h2>
             <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
                 <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-4">Về Chúng Tôi</h3>
                 <p class="text-gray-600 leading-relaxed mb-4">
-                    [Nơi điền thông tin giới thiệu về công ty EverGrow Capital: sứ mệnh, tầm nhìn, giá trị cốt lõi, lịch sử hình thành (nếu có) và những gì làm nên sự khác biệt của công ty.]
+                    EverGrow Capital là một công ty tư vấn đầu tư và quản lý tài sản độc lập, được thành lập với sứ mệnh đồng hành cùng khách hàng trên hành trình đạt được tự do tài chính và sự thịnh vượng bền vững. Chúng tôi tin rằng mỗi cá nhân và doanh nghiệp đều có những mục tiêu và hoàn cảnh riêng, do đó, chúng tôi luôn đặt khách hàng làm trọng tâm, lắng nghe và thấu hiểu để đưa ra những giải pháp tài chính tối ưu và cá nhân hóa.
                 </p>
                 <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-4">Triết Lý & Chiến Lược Đầu Tư Dài Hạn</h3>
                 <p class="text-gray-600 leading-relaxed mb-3">
                     Tại EverGrow Capital, chúng tôi tin tưởng vào sức mạnh của đầu tư dài hạn, tập trung vào các doanh nghiệp có nền tảng vững chắc và tiềm năng tăng trưởng bền vững. Triết lý của chúng tôi dựa trên:
                 </p>
                 <ul class="list-disc list-inside text-gray-600 space-y-2 mb-4">
-                    <li><span class="font-medium">Phân tích cơ bản sâu sắc:</span> [Giải thích ngắn gọn về cách công ty phân tích doanh nghiệp]</li>
-                    <li><span class="font-medium">Kiên nhẫn và tầm nhìn chiến lược:</span> [Nhấn mạnh yếu tố thời gian trong đầu tư]</li>
-                    <li><span class="font-medium">Quản trị rủi ro chặt chẽ:</span> [Nêu bật cách tiếp cận rủi ro]</li>
-                    <li><span class="font-medium">Đa dạng hóa thông minh:</span> [Không bỏ tất cả trứng vào một giỏ, nhưng tập trung vào những cơ hội tốt nhất]</li>
-                    <li><span class="font-medium">Đồng hành cùng tăng trưởng:</span> [Cam kết với khách hàng và các khoản đầu tư]</li>
+                    <li><span class="font-medium">Phân tích cơ bản sâu sắc:</span> Nghiên cứu kỹ lưỡng tình hình tài chính, lợi thế cạnh tranh, đội ngũ lãnh đạo và triển vọng ngành của doanh nghiệp.</li>
+                    <li><span class="font-medium">Kiên nhẫn và tầm nhìn chiến lược:</span> Đầu tư không phải là câu chuyện ngày một ngày hai. Chúng tôi khuyến khích sự kiên định với các khoản đầu tư có giá trị thực.</li>
+                    <li><span class="font-medium">Quản trị rủi ro chặt chẽ:</span> Xây dựng danh mục đa dạng hóa, phù hợp với khẩu vị rủi ro và mục tiêu tài chính của từng khách hàng.</li>
+                    <li><span class="font-medium">Đa dạng hóa thông minh:</span> Phân bổ tài sản vào nhiều loại hình khác nhau như cổ phiếu, trái phiếu, quỹ đầu tư và bất động sản để tối ưu hóa lợi nhuận và giảm thiểu rủi ro.</li>
+                    <li><span class="font-medium">Đồng hành cùng tăng trưởng:</span> Chúng tôi không chỉ đưa ra khuyến nghị, mà còn theo dõi sát sao và điều chỉnh danh mục khi cần thiết để phù hợp với diễn biến thị trường và mục tiêu của khách hàng.</li>
                 </ul>
                 <p class="text-gray-600 leading-relaxed">
-                    [Có thể thêm các thông tin khác về chiến lược đầu tư, ví dụ: các ngành nghề ưu tiên, tiêu chí lựa chọn cổ phiếu, v.v.]
+                    Chúng tôi ưu tiên các ngành có tiềm năng tăng trưởng dài hạn như công nghệ, y tế, tiêu dùng thiết yếu và năng lượng tái tạo. Tiêu chí lựa chọn cổ phiếu bao gồm: ban lãnh đạo có năng lực và minh bạch, lợi thế cạnh tranh bền vững, và định giá hấp dẫn.
                 </p>
             </div>
         </section>
 
-        <section id="khach-hang" class="main-content-section mb-12 sm:mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Khách Hàng Tiêu Biểu</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="image-placeholder w-32 h-32 rounded-full mx-auto mb-4">Ảnh Khách Hàng</div>
-                    <h3 class="text-xl font-semibold text-green-700 mb-2">[Họ và Tên Khách Hàng]</h3>
-                    <p class="text-gray-600 text-sm mb-1">[Chức danh/Nghề nghiệp Khách Hàng]</p>
-                    <p class="text-gray-500 text-xs italic">"[Trích dẫn ngắn hoặc nhận xét của khách hàng]"</p>
-                    <p class="text-gray-600 mt-3 text-sm leading-relaxed">
-                        [Thông tin thêm về khách hàng hoặc câu chuyện thành công.]
-                    </p>
+        <section id="khach-hang" class="main-content-section mb-12 sm:mb-16 detail-section-container">
+            <div id="client-list-view" class="list-view-panel visible-list-panel">
+                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Thông tin khách hàng</h2>
+                <div class="flex flex-wrap justify-center items-stretch gap-6">
+                    <div class="clickable-card bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center w-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.333%-1rem)] flex flex-col"
+                         data-name="Nguyễn Văn Minh" data-birth-year="1985" data-title="Quản lý cấp trung tại một tập đoàn đa quốc gia có trụ sở tại quận 1 TP. HCM"
+                         data-quote="EverGrow Capital là đối tác được chúng tôi lựa chọn kĩ lưỡng từ nhiều công ty cùng ngành khác, tôi cảm thấy rất an tâm khi trải nghiệm các dịch vụ của EverGrow Capital."
+                         data-details="1. Tình trạng tài sản: Chưa có nhà và xe hơi. Lương sau thuế của chồng là 50 triệu đồng/tháng. Sổ tiết kiệm 1 tỷ đồng. Tài sản khác không có.
+                                       2. Mục tiêu đầu tư: Mua bất động sản khu vực quận 2 trong ... năm. Khi người chồng 60 tuổi, sổ tiết kiệm phải đạt được ... tỷ nhằm mục đích hưu trí. Đảm bảo được nguồn vốn để trả học phí cho con học đại học RMIT.
+                                       3. Khả năng chấp nhận rủi ro:...............
+                                       4. Kinh nghiệm đầu tư: Đã có kinh nghiệm đầu tư chứng khoán cơ bản. Đã từng xây dựng danh mục đầu tư cơ bản nhưng chưa đa dạng hoá và tối ưu hoá phân bổ tài sản."
+                         data-image-src="images/khachhang_tuan_large.jpg">
+                        <div class="team-member-image-placeholder-card">Ảnh KH</div>
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Nguyễn Văn Minh</h3>
+                        <p class="text-gray-600 text-sm mb-1">Quản lý cấp trung</p>
+                        <p class="text-gray-500 text-xs italic">"Mục tiêu đầu tư lâu dài"</p>
+                    </div>
+                    <div class="clickable-card bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center w-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.333%-1rem)] flex flex-col"
+                         data-name="Dương Thuỳ Nhiên" data-birth-year="1987" data-title="Kế toán của một công ty gỗ"
+                         data-quote="Là một người không có nhiều thời gian theo dõi thị trường, tôi thực sự hài lòng với hiệu quả đầu tư và sự minh bạch trong quản lý danh mục mà EverGrow Capital mang lại. Đội ngũ tư vấn rất tận tâm."
+                         data-details="Lương sau thuế của vợ là 20 triệu đồng/tháng, chưa có kinh nghiệm tự đầu tư. Các mục tiêu đầu tư giống như chồng."
+                         data-image-src="images/khachhang_phuong_large.jpg">
+                        <div class="team-member-image-placeholder-card">Ảnh KH</div>
+                        <h3 class="text-xl font-semibold text-green-700 mb-2">Dương Thuỳ Nhiên</h3>
+                        <p class="text-gray-600 text-sm mb-1">Kế toán</p>
+                        <p class="text-gray-500 text-xs italic">"Mục tiêu đầu tư lâu dài"</p>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="image-placeholder w-32 h-32 rounded-full mx-auto mb-4">Ảnh Khách Hàng</div>
-                    <h3 class="text-xl font-semibold text-green-700 mb-2">[Placeholder: Tên KH 2]</h3>
-                    <p class="text-gray-600 leading-relaxed">[Placeholder: Thông tin KH 2]</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="image-placeholder w-32 h-32 rounded-full mx-auto mb-4">Ảnh Khách Hàng</div>
-                    <h3 class="text-xl font-semibold text-green-700 mb-2">[Placeholder: Tên KH 3]</h3>
-                    <p class="text-gray-600 leading-relaxed">[Placeholder: Thông tin KH 3]</p>
+            </div>
+            <div id="client-detail-panel" class="detail-view-panel hidden-detail-panel">
+                <button id="back-to-client-list-button" class="mb-6 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                    Quay lại danh sách
+                </button>
+                <div class="grid md:grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+                    <div class="lg:col-span-2">
+                        <img id="detail-client-image-actual" src="" alt="Ảnh Khách Hàng" class="detail-image-actual">
+                    </div>
+                    <div class="lg:col-span-3">
+                        <h3 id="detail-client-name" class="text-3xl lg:text-4xl font-semibold text-green-700 mb-1"></h3>
+                        <p id="detail-client-birth-year" class="text-gray-500 text-sm mb-3"></p>
+                        <p id="detail-client-title" class="text-gray-700 text-lg mb-4 font-medium"></p>
+                        <blockquote id="detail-client-quote" class="text-gray-600 italic border-l-4 border-green-500 pl-4 py-2 mb-6 text-lg"></blockquote>
+                        <p id="detail-client-details" class="text-gray-700 leading-relaxed text-base"></p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="doi-ngu-phan-tich" class="main-content-section mb-12 sm:mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Đội Ngũ Phân Tích Chuyên Nghiệp</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-                {/* Card thành viên mẫu, lặp lại 7 lần */}
-                {[...Array(7)].map((_, i) => (
-                <div key={i} class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center">
-                    <div class="team-member-image-placeholder">Ảnh 128x128</div>
-                    <h3 class="text-xl font-semibold text-green-700 mb-1">[Họ và Tên Thành Viên {i+1}]</h3>
-                    <p class="text-gray-600 text-sm">Tuổi: [Tuổi]</p>
-                    <p class="text-gray-500 text-sm italic">[Chức vụ]</p>
+        <section id="doi-ngu-phan-tich" class="main-content-section mb-12 sm:mb-16 detail-section-container">
+            <div id="team-list-view" class="list-view-panel visible-list-panel">
+                <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Đội Ngũ Phân Tích Sắp Chuyên Nghiệp</h2>
+                <div class="flex flex-wrap justify-center items-stretch gap-6">
+                    <div class="clickable-card bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center w-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.333%-1rem)] flex flex-col"
+                         data-name="Đào Thị Minh Anh" data-age="1+2+3+4+5+6" data-title="Trưởng nhóm phân tích"
+                         data-bio="Với kinh nghiệm trong lĩnh vực phân tích tài chính và đầu tư, Minh Anh chuyên về phân tích các vấn đề liên quan đến tài chính. Hiện đang là sinh viên năm 3 Ngành TC-NH tại trường Đại học Ngân hàng TP. HCM. CHƯA CÓ NGƯỜI YÊU!!!."
+                         data-image-src="images/team_minhanh_large.jpg">
+                        <div class="team-member-image-placeholder-card">Ảnh TV</div>
+                        <h3 class="text-xl font-semibold text-green-700 mb-1">Đào Thị Minh Anh</h3>
+                        <p class="text-gray-500 text-sm italic">Nhóm trưởng</p>
+                    </div>
+                    <div class="clickable-card bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center w-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.333%-1rem)] flex flex-col"
+                         data-name="Đỗ Hoàng Khương" data-age="(21x)'" data-title="Trưởng BPKT"
+                         data-bio="Khương chuyên về xử lý số liệu, làm website cũng như các vấn đề liên quan đến công nghệ. Hiện đang là sinh viên năm 3 Ngành TC-NH tại trường Đại học Ngân hàng TP. HCM. Đang hẹn hò với CÔ ĐƠN."
+                         data-image-src="images/team_khuong_large.jpg">
+                        <div class="team-member-image-placeholder-card">Ảnh TV</div>
+                        <h3 class="text-xl font-semibold text-green-700 mb-1">Đỗ Hoàng Khương</h3>
+                        <p class="text-gray-500 text-sm italic">Trưởng BPKT</p>
+                    </div>
+                    <div class="clickable-card bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center w-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.333%-1rem)] flex flex-col"
+                         data-name="Phan Vũ Thuỳ An" data-age="2x-1=41" data-title="Cấp dưới Minh Anh"
+                         data-bio="Thuỳ An chuyên về phân tích vĩ mô ngành, vĩ mô nền kinh tế. Hiện đang là sinh viên năm 3 Ngành TC-NH tại trường Đại học Ngân hàng TP. HCM. Không ai hỏi về người yêu."
+                         data-image-src="images/team_thuyan_large.jpg">
+                        <div class="team-member-image-placeholder-card">Ảnh TV</div>
+                        <h3 class="text-xl font-semibold text-green-700 mb-1">Phan Vũ Thuỳ An</h3>
+                        <p class="text-gray-500 text-sm italic">Cựu thiếu nhi</p>
+                    </div>
+                    <div class="clickable-card bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center w-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.333%-1rem)] flex flex-col"
+                         data-name="Lê Hoàng Phước Đạt" data-age="21" data-title="Không cấp dưới của ai"
+                         data-bio="Đạt chuyên về ..............."
+                         data-image-src="images/team_dat_large.jpg">
+                        <div class="team-member-image-placeholder-card">Ảnh TV</div>
+                        <h3 class="text-xl font-semibold text-green-700 mb-1">Lê Hoàng Phước Đạt</h3>
+                        <p class="text-gray-500 text-sm italic">Cựu thiếu nhi</p>
+                    </div>
+                    <div class="clickable-card bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center w-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.333%-1rem)] flex flex-col"
+                         data-name="Nguyễn Thị Phương Linh" data-age="4^2+5" data-title="Cấp dưới Minh Anh"
+                         data-bio="Phương Linh theo dõi và phân tích các ngành kinh tế trọng điểm như Bất động sản, Năng lượng, đánh giá tác động của các yếu tố vĩ mô và chính sách lên triển vọng của ngành, từ đó cung cấp góc nhìn tổng quan cho các quyết định đầu tư. Sinh viên năm 3, Đại học Ngân hàng TP.HCM."
+                         data-image-src="images/team_phuonglinh_large.jpg">
+                        <div class="team-member-image-placeholder-card">Ảnh TV</div>
+                        <h3 class="text-xl font-semibold text-green-700 mb-1">Nguyễn Thị Phương Linh</h3>
+                        <p class="text-gray-500 text-sm italic">Cựu thiếu nhi</p>
+                    </div>
+                    <div class="clickable-card bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center w-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.333%-1rem)] flex flex-col"
+                         data-name="Nguyễn Minh Thư" data-age="21.sin(pi/2)" data-title="Cấp dưới Minh Anh"
+                         data-bio="Minh Thư hỗ trợ khách hàng xây dựng và quản lý danh mục đầu tư cá nhân hóa, tập trung vào việc tối ưu hóa lợi nhuận dựa trên khẩu vị rủi ro. Hiện đang là sinh viên năm 3 Ngành TC-NH tại trường Đại học Ngân hàng TP. HCM."
+                         data-image-src="images/team_minhthu_large.jpg">
+                        <div class="team-member-image-placeholder-card">Ảnh TV</div>
+                        <h3 class="text-xl font-semibold text-green-700 mb-1">Nguyễn Minh Thư</h3>
+                        <p class="text-gray-500 text-sm italic">Cựu thiếu nhi</p>
+                    </div>
+                    <div class="clickable-card bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center w-full sm:basis-[calc(50%-0.75rem)] md:basis-[calc(33.333%-1rem)] flex flex-col"
+                         data-name="Nguyễn Hoàng Anh Thư" data-age="ln(e^21)" data-title="Cấp dưới Minh Anh"
+                         data-bio="Anh Thư chịu trách nhiệm thu thập, tổng hợp dữ liệu thị trường, xây dựng chi tiêu của khách hàng để đưa ra quyết định đầu tư hợp lý. Hiện đang là sinh viên năm 3 Ngành TC-NH tại trường Đại học Ngân hàng TP. HCM."
+                         data-image-src="images/team_anhthu_large.jpg">
+                        <div class="team-member-image-placeholder-card">Ảnh TV</div>
+                        <h3 class="text-xl font-semibold text-green-700 mb-1">Nguyễn Hoàng Anh Thư</h3>
+                        <p class="text-gray-500 text-sm italic">Cựu thiếu nhi</p>
+                    </div>
                 </div>
-                ))}
+            </div>
+            <div id="team-detail-panel" class="detail-view-panel hidden-detail-panel">
+                <button id="back-to-team-list-button" class="mb-6 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+                    Quay lại danh sách
+                </button>
+                <div class="grid md:grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+                    <div class="lg:col-span-2">
+                        <img id="detail-team-image-actual" src="" alt="Ảnh Thành viên" class="detail-image-actual">
+                    </div>
+                    <div class="lg:col-span-3">
+                        <h3 id="detail-team-name" class="text-3xl lg:text-4xl font-semibold text-green-700 mb-1"></h3>
+                        <p id="detail-team-age" class="text-gray-500 text-sm mb-1"></p>
+                        <p id="detail-team-title" class="text-gray-700 text-lg mb-4 font-medium"></p>
+                        <p id="detail-team-bio" class="text-gray-700 leading-relaxed text-base"></p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="danh-muc-dau-tu" class="main-content-section mb-12 sm:mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Danh Mục Đầu Tư Mẫu</h2>
-            <div class="space-y-10">
-                {/* Mã Cổ Phiếu 1 */}
-                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-green-700 mb-4">[Tên Mã Cổ Phiếu 1 - Ví dụ: ABC]</h3>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-green-600 pb-3">Danh Mục Đầu Tư</h2>
+            <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <div class="stock-tabs mb-6 border-b border-gray-300 flex flex-wrap gap-4">
+                    <button class="tab-button active" onclick="showStockContent('stockContent1', this)">FPT</button>
+                    <button class="tab-button" onclick="showStockContent('stockContent2', this)">VCB</button>
+                    <button class="tab-button" onclick="showStockContent('stockContent3', this)">HPG</button>
+                </div>
+
+                <div id="stockContent1" class="stock-content active">
+                    <h3 class="text-2xl font-semibold text-green-700 mb-4">Cổ Phiếu Ưu Tiên: FPT (Tập đoàn FPT)</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Luận điểm đầu tư:</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li><strong>Dẫn đầu chuyển đổi số:</strong> FPT là đối tác tin cậy của nhiều doanh nghiệp lớn trong và ngoài nước về tư vấn và triển khai giải pháp công nghệ.</li>
+                                <li><strong>Tăng trưởng bền vững từ thị trường quốc tế:</strong> Mảng xuất khẩu phần mềm, đặc biệt tại Nhật Bản, Mỹ và châu Âu, liên tục tăng trưởng hai con số.</li>
+                                <li><strong>Hệ sinh thái sản phẩm đa dạng:</strong> Từ giáo dục, viễn thông đến các giải pháp Made-by-FPT, tạo nguồn doanh thu ổn định và tiềm năng mở rộng.</li>
+                                <li><strong>Văn hóa doanh nghiệp mạnh:</strong> Khuyến khích đổi mới sáng tạo và phát triển nhân tài.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Rủi ro cần lưu ý:</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Biến động tỷ giá có thể ảnh hưởng đến doanh thu từ thị trường nước ngoài.</li>
+                                <li>Cạnh tranh gay gắt trong ngành công nghệ thông tin.</li>
+                                <li>Rủi ro thiếu hụt nhân sự chất lượng cao.</li>
+                            </ul>
+                            <h4 class="text-lg font-semibold text-gray-700 mt-4 mb-2">Định giá & Khuyến nghị (Ví dụ):</h4>
+                            <p class="text-gray-600">Giá mục tiêu (1 năm): 145.000 VNĐ | P/E dự phóng: 18.x | Khuyến nghị: MUA</p>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">Biểu đồ phân tích (Ví dụ):</h4>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Tăng trưởng Doanh thu FPT (5 năm)</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ P/E của FPT so với VNINDEX & Ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Phân tích Kỹ thuật FPT (Ngắn hạn)</div>
+                    </div>
+                </div>
+
+                <div id="stockContent2" class="stock-content hidden">
+                    <h3 class="text-2xl font-semibold text-green-700 mb-4">Cổ Phiếu Ưu Tiên: VCB (Ngân hàng TMCP Ngoại thương Việt Nam)</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Luận điểm đầu tư:</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li><strong>Ngân hàng đầu ngành:</strong> Sở hữu vị thế dẫn đầu về quy mô, thương hiệu, và chất lượng tài sản.</li>
+                                <li><strong>Tỷ lệ CASA cao:</strong> Lợi thế chi phí vốn thấp, hỗ trợ NIM ở mức cao.</li>
+                                <li><strong>Chất lượng tài sản vượt trội:</strong> Tỷ lệ nợ xấu thấp, bộ đệm dự phòng vững chắc.</li>
+                                <li><strong>Tiềm năng từ Bancassurance và Ngân hàng số:</strong> Các mảng kinh doanh mới đóng góp ngày càng lớn vào lợi nhuận.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Rủi ro cần lưu ý:</h4>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Rủi ro tín dụng tiềm ẩn từ các biến động kinh tế vĩ mô.</li>
+                                <li>Áp lực cạnh tranh từ các ngân hàng tư nhân và fintech.</li>
+                            </ul>
+                            <h4 class="text-lg font-semibold text-gray-700 mt-4 mb-2">Định giá & Khuyến nghị (Ví dụ):</h4>
+                            <p class="text-gray-600">Giá mục tiêu (1 năm): 110.000 VNĐ | P/B dự phóng: 2.x | Khuyến nghị: KHẢ QUAN</p>
+                        </div>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">Biểu đồ phân tích (Ví dụ):</h4>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Tăng trưởng Lợi nhuận VCB (5 năm)</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ NIM và CASA của VCB</div>
+                        <div class="chart-placeholder p-4 rounded text-center">So sánh P/B VCB với các Ngân hàng trong khu vực</div>
+                    </div>
+                </div>
+
+                <div id="stockContent3" class="stock-content hidden">
+                    <h3 class="text-2xl font-semibold text-green-700 mb-4">Cổ Phiếu Ưu Tiên: HPG (Công ty Cổ phần Tập đoàn Hòa Phát)</h3>
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <h4 class="text-lg font-semibold text-gray-700 mb-2">Đặc điểm nổi bật:</h4>
                             <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                <li>Đặc điểm 1 của Mã ABC: [Điền chi tiết đặc điểm 1]</li>
-                                <li>Đặc điểm 2 của Mã ABC: [Điền chi tiết đặc điểm 2]</li>
-                                <li>Đặc điểm 3 của Mã ABC: [Điền chi tiết đặc điểm 3]</li>
+                                <li>Doanh nghiệp sản xuất thép lớn nhất Việt Nam với chuỗi giá trị khép kín.</li>
+                                <li>Thị phần nội địa cao, có lợi thế về quy mô và chi phí sản xuất.</li>
+                                <li>Mở rộng sang các lĩnh vực khác như container, nông nghiệp.</li>
                             </ul>
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Hiệu suất & Số liệu:</h4>
-                            <p class="text-gray-600">[Nơi để các số liệu tóm tắt hoặc nhận định về hiệu suất của mã ABC]</p>
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Hiệu suất & Số liệu (Ví dụ):</h4>
+                            <p class="text-gray-600">Giá mục tiêu: [Giá] | P/E: [Số liệu] | Sản lượng: [Số liệu]</p>
                         </div>
                     </div>
-                    <h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">Biểu đồ so sánh với Trung bình Ngành:</h4>
+                    <h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">Biểu đồ so sánh với Trung bình Ngành (Ví dụ):</h4>
                     <div class="grid md:grid-cols-3 gap-4">
-                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ ROA của [Mã ABC] và TB ngành</div>
-                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ P/E của [Mã ABC] và TB ngành</div>
-                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Vốn hóa của [Mã ABC] và TB ngành</div>
-                    </div>
-                </div>
-                {/* Mã Cổ Phiếu 2 */}
-                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-green-700 mb-4">[Tên Mã Cổ Phiếu 2 - Ví dụ: XYZ]</h3>
-                     <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Đặc điểm nổi bật:</h4>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                <li>Đặc điểm 1 của Mã XYZ: [Điền chi tiết đặc điểm 1]</li>
-                                <li>Đặc điểm 2 của Mã XYZ: [Điền chi tiết đặc điểm 2]</li>
-                                <li>Đặc điểm 3 của Mã XYZ: [Điền chi tiết đặc điểm 3]</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Hiệu suất & Số liệu:</h4>
-                            <p class="text-gray-600">[Nơi để các số liệu tóm tắt hoặc nhận định về hiệu suất của mã XYZ]</p>
-                        </div>
-                    </div>
-                    <h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">Biểu đồ so sánh với Trung bình Ngành:</h4>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ ROA của [Mã XYZ] và TB ngành</div>
-                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ P/E của [Mã XYZ] và TB ngành</div>
-                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Vốn hóa của [Mã XYZ] và TB ngành</div>
-                    </div>
-                </div>
-                {/* Mã Cổ Phiếu 3 */}
-                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-2xl font-semibold text-green-700 mb-4">[Tên Mã Cổ Phiếu 3 - Ví dụ: QWE]</h3>
-                     <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Đặc điểm nổi bật:</h4>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                <li>Đặc điểm 1 của Mã QWE: [Điền chi tiết đặc điểm 1]</li>
-                                <li>Đặc điểm 2 của Mã QWE: [Điền chi tiết đặc điểm 2]</li>
-                                <li>Đặc điểm 3 của Mã QWE: [Điền chi tiết đặc điểm 3]</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Hiệu suất & Số liệu:</h4>
-                            <p class="text-gray-600">[Nơi để các số liệu tóm tắt hoặc nhận định về hiệu suất của mã QWE]</p>
-                        </div>
-                    </div>
-                    <h4 class="text-lg font-semibold text-gray-700 mt-6 mb-3">Biểu đồ so sánh với Trung bình Ngành:</h4>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ ROA của [Mã QWE] và TB ngành</div>
-                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ P/E của [Mã QWE] và TB ngành</div>
-                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Vốn hóa của [Mã QWE] và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Giá Thép và Giá Cổ Phiếu HPG</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Biên Lợi Nhuận Gộp của HPG và TB ngành</div>
+                        <div class="chart-placeholder p-4 rounded text-center">Biểu đồ Nợ/VCSH của HPG và TB ngành</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="phan-tich-co-phieu" class="main-content-section mb-12 sm:mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-yellow-500 pb-3">Phân Tích Cổ Phiếu Chuyên Sâu</h2>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gray-800 mb-6 sm:mb-8 border-b-2 border-yellow-500 pb-3">Phân Tích Cổ Phiếu</h2>
             <div class="bg-white p-6 sm:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
-                <div class="tab-buttons mb-6 border-b border-gray-300 flex flex-wrap">
-                    <button class="tab-button active" onclick="showStockAnalysis('stockAnalysis1', this)">[Mã CP 1]</button>
-                    <button class="tab-button" onclick="showStockAnalysis('stockAnalysis2', this)">[Mã CP 2]</button>
-                    <button class="tab-button" onclick="showStockAnalysis('stockAnalysis3', this)">[Mã CP 3]</button>
-                    <button class="tab-button" onclick="showStockAnalysis('stockAnalysis4', this)">[Mã CP 4]</button>
-                    <button class="tab-button" onclick="showStockAnalysis('stockAnalysis5', this)">[Mã CP 5]</button>
+                <div class="tab-buttons mb-6 border-b border-gray-300 flex flex-wrap gap-4">
+                    <button class="tab-button active" onclick="showStockAnalysis('stockAnalysis1', this)">FPT</button>
+                    <button class="tab-button" onclick="showStockAnalysis('stockAnalysis2', this)">VCB</button>
+                    <button class="tab-button" onclick="showStockAnalysis('stockAnalysis3', this)">HPG</button>
+                    <button class="tab-button" onclick="showStockAnalysis('stockAnalysis4', this)">MWG</button>
+                    <button class="tab-button" onclick="showStockAnalysis('stockAnalysis5', this)">PNJ</button>
                 </div>
 
                 <div id="stockAnalysis1" class="stock-analysis-content active">
-                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 1]</h3>
-                    <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 1...]</p>
-                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 1</div>
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho FPT</h3>
+                    <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu FPT. Bao gồm các yếu tố cơ bản, kỹ thuật, triển vọng, rủi ro, khuyến nghị (nếu có), biểu đồ, bảng biểu liên quan...]</p>
+                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho FPT</div>
                 </div>
-                <div id="stockAnalysis2" class="stock-analysis-content">
-                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 2]</h3>
-                    <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 2...]</p>
-                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 2</div>
+                <div id="stockAnalysis2" class="stock-analysis-content hidden">
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho VCB</h3>
+                    <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu VCB...]</p>
+                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho VCB</div>
                 </div>
-                <div id="stockAnalysis3" class="stock-analysis-content">
-                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 3]</h3>
-                     <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 3...]</p>
-                     <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 3</div>
+                <div id="stockAnalysis3" class="stock-analysis-content hidden">
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho HPG</h3>
+                    <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu HPG...]</p>
+                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho HPG</div>
                 </div>
-                <div id="stockAnalysis4" class="stock-analysis-content">
-                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 4]</h3>
-                    <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 4...]</p>
-                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 4</div>
+                <div id="stockAnalysis4" class="stock-analysis-content hidden">
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho MWG</h3>
+                    <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu MWG...]</p>
+                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho MWG</div>
                 </div>
-                <div id="stockAnalysis5" class="stock-analysis-content">
-                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho [Mã CP 5]</h3>
-                    <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu 5...]</p>
-                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho Mã CP 5</div>
+                <div id="stockAnalysis5" class="stock-analysis-content hidden">
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-3">Phân tích chi tiết cho PNJ</h3>
+                    <p class="text-gray-600 leading-relaxed">[Nội dung phân tích chi tiết cho Mã Cổ Phiếu PNJ...]</p>
+                    <div class="chart-placeholder p-4 my-4 rounded text-center">Biểu đồ/bảng phân tích chính cho PNJ</div>
                 </div>
             </div>
         </section>
@@ -337,61 +505,1077 @@
                 <div>
                     <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-2">vnstock</h3>
                     <p class="text-gray-600 leading-relaxed mb-2">
-                        [Giới thiệu ngắn về vnstock...]
+                        Thư viện Python mạnh mẽ cho phép truy cập dữ liệu lịch sử và thời gian thực của thị trường chứng khoán Việt Nam, hỗ trợ phân tích kỹ thuật, thống kê và xây dựng mô hình định lượng. Rất hữu ích cho các nhà đầu tư cá nhân và tổ chức muốn tự động hóa quy trình phân tích.
                     </p>
-                    <a href="[Link vnstock]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Tìm hiểu thêm về vnstock &rarr;</a>
+                    <a href="https://github.com/thinh-vu/vnstock" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Tìm hiểu thêm về vnstock &rarr;</a>
                 </div>
                 <div>
                     <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-2">FiinPro</h3>
                     <p class="text-gray-600 leading-relaxed mb-2">
-                        [Giới thiệu ngắn về FiinPro...]
+                        Nền tảng dữ liệu tài chính toàn diện và chuyên sâu hàng đầu cho thị trường Việt Nam, cung cấp thông tin chi tiết về doanh nghiệp, ngành, kinh tế vĩ mô, cùng các công cụ phân tích và sàng lọc cổ phiếu mạnh mẽ. Phù hợp cho các chuyên gia phân tích và quỹ đầu tư.
                     </p>
-                    <a href="[Link FiinPro]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Khám phá FiinPro &rarr;</a>
+                    <a href="https://fiinpro.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Khám phá FiinPro &rarr;</a>
                 </div>
                 <div>
                     <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-2">Python & Jupyter Notebook</h3>
                     <p class="text-gray-600 leading-relaxed mb-2">
-                        [Giới thiệu ngắn về Python & Jupyter Notebook...]
+                        Bộ đôi công cụ mạnh mẽ cho phân tích dữ liệu và tài chính định lượng. Python với các thư viện như Pandas, NumPy, Matplotlib, Scikit-learn cho phép xử lý, trực quan hóa dữ liệu và xây dựng mô hình phức tạp. Jupyter Notebook cung cấp môi trường tương tác để viết code, hiển thị kết quả và ghi chú.
                     </p>
                     <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li><a href="[Link Python]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Trang chủ Python</a></li>
-                        <li><a href="[Link Jupyter]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Dự án Jupyter</a></li>
+                        <li><a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Trang chủ Python</a></li>
+                        <li><a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Dự án Jupyter</a></li>
                     </ul>
                 </div>
-                <div>
+                 <div>
                     <h3 class="text-xl sm:text-2xl font-semibold text-green-700 mb-2">Tài Liệu Tham Khảo Khác</h3>
                     <ul class="list-disc list-inside text-gray-600 space-y-1">
-                        <li><a href="[Link tài liệu 1]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">[Tên tài liệu tham khảo 1]</a></li>
-                        <li><a href="[Link tài liệu 2]" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">[Tên tài liệu tham khảo 2]</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">[Sách: Nhà Đầu Tư Thông Minh - Benjamin Graham]</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">[Sách: Phân Tích Chứng Khoán - Benjamin Graham & David Dodd]</a></li>
+                         <li><a href="https://www.investopedia.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline">Investopedia - Kiến thức đầu tư</a></li>
                     </ul>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="text-gray-300 text-center p-8 mt-auto">
-        <p>&copy; <span id="currentYear"></span> EverGrow Capital. Mọi quyền được bảo lưu.</p>
-        <p class="text-sm mt-2">Thông tin trên trang này chỉ mang tính chất tham khảo.</p>
-    </footer>
+    <!-- Services Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Dịch vụ đầu tư của chúng tôi
+          </h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Chúng tôi cung cấp các giải pháp đầu tư toàn diện được thiết kế để
+            đáp ứng mục tiêu tài chính của bạn.
+          </p>
+        </div>
 
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="ri-line-chart-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Quản lý danh mục đầu tư
+            </h3>
+            <p class="text-gray-600">
+              Chiến lược đầu tư được cá nhân hóa dựa trên mục tiêu và khẩu vị
+              rủi ro của bạn, được quản lý bởi đội ngũ chuyên gia giàu kinh
+              nghiệm.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="ri-funds-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Phân tích thị trường
+            </h3>
+            <p class="text-gray-600">
+              Nghiên cứu chuyên sâu và phân tích thị trường cập nhật để giúp bạn
+              đưa ra quyết định đầu tư sáng suốt trong môi trường tài chính luôn
+              thay đổi.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded shadow-md hover:shadow-lg transition duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6"
+            >
+              <i class="ri-shield-check-line ri-2x text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Tư vấn tài chính
+            </h3>
+            <p class="text-gray-600">
+              Tư vấn tài chính toàn diện để giúp bạn xây dựng và duy trì một kế
+              hoạch tài chính vững chắc phù hợp với mục tiêu dài hạn của bạn.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="md:w-1/2">
+            <img
+              src="https://readdy.ai/api/search-image?query=Professional%20financial%20advisors%20in%20a%20modern%20office%20discussing%20investment%20strategies%20with%20charts%20and%20graphs%20on%20screens%2C%20business%20meeting%20with%20diverse%20team%20members%2C%20clean%20corporate%20environment%2C%20financial%20planning%20session&width=600&height=500&seq=2&orientation=landscape"
+              alt="Đội ngũ chuyên gia tài chính"
+              class="rounded-lg shadow-lg w-full"
+            />
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+              Tại sao chọn EverGrow Capital?
+            </h2>
+
+            <div class="space-y-6">
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full flex-shrink-0"
+                >
+                  <i class="ri-user-star-line ri-lg text-primary"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Đội ngũ chuyên gia
+                  </h3>
+                  <p class="text-gray-600">
+                    Đội ngũ chuyên gia của chúng tôi có nhiều năm kinh nghiệm
+                    trong lĩnh vực tài chính và đầu tư.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full flex-shrink-0"
+                >
+                  <i class="ri-strategy-line ri-lg text-primary"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Chiến lược đầu tư đa dạng
+                  </h3>
+                  <p class="text-gray-600">
+                    Chúng tôi cung cấp nhiều chiến lược đầu tư khác nhau để phù
+                    hợp với mọi mục tiêu tài chính và khẩu vị rủi ro.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full flex-shrink-0"
+                >
+                  <i class="ri-customer-service-2-line ri-lg text-primary"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">
+                    Dịch vụ khách hàng xuất sắc
+                  </h3>
+                  <p class="text-gray-600">
+                    Chúng tôi cam kết cung cấp dịch vụ khách hàng tận tâm và
+                    luôn sẵn sàng hỗ trợ bạn trong suốt hành trình đầu tư.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            Khách hàng nói gì về chúng tôi
+          </h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Khám phá trải nghiệm của khách hàng khi làm việc với EverGrow
+            Capital.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <i class="ri-double-quotes-l ri-2x text-primary"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "EverGrow Capital đã giúp tôi xây dựng một danh mục đầu tư đa dạng
+              và hiệu quả. Đội ngũ chuyên gia của họ luôn sẵn sàng giải đáp mọi
+              thắc mắc và cung cấp những lời khuyên hữu ích."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+              <div>
+                <h4 class="font-bold text-gray-800">Nguyễn Thanh Tùng</h4>
+                <p class="text-gray-600">Doanh nhân, Hà Nội</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <i class="ri-double-quotes-l ri-2x text-primary"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "Tôi đã làm việc với nhiều công ty tư vấn đầu tư khác nhau, nhưng
+              EverGrow Capital thực sự nổi bật với phương pháp tiếp cận cá nhân
+              hóa và chiến lược đầu tư bền vững của họ."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+              <div>
+                <h4 class="font-bold text-gray-800">Trần Minh Hương</h4>
+                <p class="text-gray-600">Giám đốc tài chính, TP.HCM</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+            <div class="flex items-center mb-4">
+              <i class="ri-double-quotes-l ri-2x text-primary"></i>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "Kể từ khi bắt đầu làm việc với EverGrow Capital, tôi đã thấy sự
+              cải thiện đáng kể trong hiệu suất danh mục đầu tư của mình. Họ
+              thực sự hiểu rõ mục tiêu của tôi và đưa ra những giải pháp phù
+              hợp."
+            </p>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+              <div>
+                <h4 class="font-bold text-gray-800">Lê Văn Hoàng</h4>
+                <p class="text-gray-600">Kỹ sư, Đà Nẵng</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">
+              Đánh giá khẩu vị rủi ro & Đăng ký nhận bản tin
+            </h2>
+            <p class="text-lg text-gray-600">
+              Hãy cho chúng tôi biết thêm về bạn để nhận được những thông tin
+              phù hợp nhất.
+            </p>
+          </div>
+          <form
+            id="riskAssessmentForm"
+            class="bg-gray-50 p-8 rounded-lg shadow-md mb-8"
+          >
+            <div class="space-y-6">
+              <div class="border-b border-gray-200 pb-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  1. Độ tuổi của bạn
+                </h3>
+                <div class="space-y-2">
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="age"
+                      value="1"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Trên 60 tuổi</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="age"
+                      value="2"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">46-60 tuổi</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="age"
+                      value="3"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">31-45 tuổi</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="age"
+                      value="4"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">18-30 tuổi</span>
+                  </label>
+                </div>
+              </div>
+              <div class="border-b border-gray-200 pb-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  2. Kinh nghiệm đầu tư của bạn
+                </h3>
+                <div class="space-y-2">
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="experience"
+                      value="1"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Chưa có kinh nghiệm</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="experience"
+                      value="2"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Dưới 1 năm</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="experience"
+                      value="3"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">1-3 năm</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="experience"
+                      value="4"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Trên 3 năm</span>
+                  </label>
+                </div>
+              </div>
+              <div class="border-b border-gray-200 pb-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  3. Mục tiêu đầu tư của bạn
+                </h3>
+                <div class="space-y-2">
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="goal"
+                      value="1"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Bảo toàn vốn</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="goal"
+                      value="2"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Thu nhập ổn định</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="goal"
+                      value="3"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Tăng trưởng vừa phải</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="goal"
+                      value="4"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Tăng trưởng tối đa</span>
+                  </label>
+                </div>
+              </div>
+              <div class="border-b border-gray-200 pb-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  4. Thời gian đầu tư dự kiến
+                </h3>
+                <div class="space-y-2">
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="timeframe"
+                      value="1"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Dưới 1 năm</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="timeframe"
+                      value="2"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">1-3 năm</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="timeframe"
+                      value="3"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">3-5 năm</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="timeframe"
+                      value="4"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Trên 5 năm</span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  5. Mức độ chấp nhận rủi ro
+                </h3>
+                <div class="space-y-2">
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="riskTolerance"
+                      value="1"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2">Rất thấp - Không muốn mạo hiểm vốn</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="riskTolerance"
+                      value="2"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2"
+                      >Thấp - Chấp nhận rủi ro thấp để có lợi nhuận ổn
+                      định</span
+                    >
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="riskTolerance"
+                      value="3"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2"
+                      >Trung bình - Sẵn sàng chấp nhận biến động để có lợi nhuận
+                      cao hơn</span
+                    >
+                  </label>
+                  <label class="flex items-center">
+                    <input
+                      type="radio"
+                      name="riskTolerance"
+                      value="4"
+                      class="w-4 h-4 text-primary"
+                    />
+                    <span class="ml-2"
+                      >Cao - Chấp nhận rủi ro lớn để có cơ hội lợi nhuận
+                      cao</span
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              id="resultSection"
+              class="hidden mt-8 p-6 bg-white rounded-lg shadow-md"
+            >
+              <h3 class="text-xl font-bold text-gray-800 mb-4">
+                Kết quả đánh giá
+              </h3>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-lg font-medium">Điểm số của bạn:</span>
+                <span id="riskScore" class="text-2xl font-bold text-primary"
+                  >0/20</span
+                >
+              </div>
+              <div class="mb-4">
+                <span class="text-lg font-medium">Khẩu vị rủi ro:</span>
+                <span
+                  id="riskAppetite"
+                  class="ml-2 text-lg font-medium text-primary"
+                  >Chưa xác định</span
+                >
+              </div>
+              <p id="riskDescription" class="text-gray-600">
+                Vui lòng hoàn thành bảng câu hỏi để nhận được đánh giá.
+              </p>
+            </div>
+            <div class="mt-8">
+              <div class="flex flex-col sm:flex-row gap-4">
+                <input
+                  type="email"
+                  placeholder="Địa chỉ email của bạn"
+                  class="flex-grow px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+                <button
+                  type="submit"
+                  class="bg-primary hover:bg-secondary text-white font-medium px-6 py-3 !rounded-button whitespace-nowrap transition duration-300"
+                >
+                  Đăng ký nhận tư vấn
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <script id="riskAssessmentScript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("riskAssessmentForm");
+        const resultSection = document.getElementById("resultSection");
+        const riskScore = document.getElementById("riskScore");
+        const riskAppetite = document.getElementById("riskAppetite");
+        const riskDescription = document.getElementById("riskDescription");
+        const calculateRiskProfile = () => {
+          const selections = [
+            "age",
+            "experience",
+            "goal",
+            "timeframe",
+            "riskTolerance",
+          ];
+          let totalScore = 0;
+          let allSelected = true;
+          selections.forEach((item) => {
+            const selected = form.querySelector(`input[name="${item}"]:checked`);
+            if (selected) {
+              totalScore += parseInt(selected.value);
+            } else {
+              allSelected = false;
+            }
+          });
+          if (allSelected) {
+            resultSection.classList.remove("hidden");
+            riskScore.textContent = `${totalScore}/20`;
+            let profile = "";
+            let description = "";
+            if (totalScore <= 8) {
+              profile = "Thận trọng";
+              description =
+                "Bạn là nhà đầu tư thận trọng, ưu tiên bảo toàn vốn và ổn định. Danh mục đầu tư phù hợp nên tập trung vào các sản phẩm có rủi ro thấp.";
+            } else if (totalScore <= 12) {
+              profile = "Cân bằng";
+              description =
+                "Bạn là nhà đầu tư cân bằng, chấp nhận rủi ro vừa phải để có lợi nhuận tốt hơn. Danh mục đầu tư nên cân bằng giữa tăng trưởng và bảo toàn.";
+            } else if (totalScore <= 16) {
+              profile = "Tăng trưởng";
+              description =
+                "Bạn là nhà đầu tư tăng trưởng, sẵn sàng chấp nhận rủi ro để có cơ hội sinh lời cao. Danh mục đầu tư có thể tập trung vào các sản phẩm tăng trưởng.";
+            } else {
+              profile = "Tích cực";
+              description =
+                "Bạn là nhà đầu tư tích cực, chấp nhận rủi ro cao để tìm kiếm lợi nhuận tối đa. Danh mục đầu tư có thể bao gồm các sản phẩm có tính đầu cơ cao.";
+            }
+            riskAppetite.textContent = profile;
+            riskDescription.textContent = description;
+          }
+        };
+        form.addEventListener("change", calculateRiskProfile);
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const email = form.querySelector('input[type="email"]').value;
+          if (!email) {
+            const emailInput = form.querySelector('input[type="email"]');
+            emailInput.classList.add("ring-2", "ring-red-500");
+            setTimeout(() => {
+              emailInput.classList.remove("ring-2", "ring-red-500");
+            }, 2000);
+            return;
+          }
+
+          const successMessage = document.createElement("div");
+          successMessage.className =
+            "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg";
+          successMessage.textContent =
+            "Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn sớm.";
+          document.body.appendChild(successMessage);
+
+          setTimeout(() => {
+            successMessage.remove();
+          }, 3000);
+
+          form.reset();
+          resultSection.classList.add("hidden");
+        });
+      });
+    </script>
+
+<footer class="bg-primary text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">EverGrow Capital</h3>
+                <p class="mb-4">Đầu tư thông minh, Tăng trưởng bền vững</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition duration-300">
+                        <i class="ri-facebook-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition duration-300">
+                        <i class="ri-twitter-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition duration-300">
+                        <i class="ri-linkedin-fill ri-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Dịch vụ</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#danh-muc-dau-tu" data-target="danh-muc-dau-tu" class="nav-link hover:text-yellow-300 transition duration-300 scroll-smooth">Quản lý danh mục đầu tư</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-yellow-300 transition duration-300 service-link">Phân tích thị trường</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-yellow-300 transition duration-300 service-link">Tư vấn tài chính</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-yellow-300 transition duration-300 service-link">Lập kế hoạch hưu trí</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-yellow-300 transition duration-300 service-link">Đầu tư bất động sản</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Liên kết</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#hero-section" data-target="hero-section" class="nav-link hover:text-yellow-300 transition duration-300">Trang chủ</a>
+                    </li>
+                    <li>
+                        <a href="#tong-quan" data-target="tong-quan" class="nav-link hover:text-yellow-300 transition duration-300">Về chúng tôi</a>
+                    </li>
+                    <li>
+                        <a href="#danh-muc-dau-tu" data-target="danh-muc-dau-tu" class="nav-link hover:text-yellow-300 transition duration-300">Dịch vụ</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-yellow-300 transition duration-300">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-yellow-300 transition duration-300">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Liên hệ</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start gap-3">
+                        <i class="ri-map-pin-line ri-lg mt-1"></i>
+                        <span>123 Đường Nguyễn Huệ, Quận 1, TP.HCM</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="ri-phone-line ri-lg"></i>
+                        <span>(+84) 28 1234 5678</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="ri-mail-line ri-lg"></i>
+                        <span>info@evergrowcapital.vn</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white border-opacity-20 mt-12 pt-8 text-center text-sm text-white text-opacity-70">
+            <p>© 2025 EverGrow Capital. Mọi quyền được bảo lưu.</p>
+            <p class="mt-2">Thông tin trên trang này chỉ mang tính chất tham khảo.</p>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <div
+      id="comingSoonModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full mx-4">
+        <div class="text-center">
+          <i class="ri-timer-line ri-3x text-primary mb-4"></i>
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Coming Soon!</h3>
+          <p class="text-gray-600 mb-4">
+            Tính năng này đang được phát triển. Vui lòng quay lại sau.
+          </p>
+          <button
+            class="bg-primary hover:bg-secondary text-yellow-300 font-medium px-6 py-2 !rounded-button whitespace-nowrap transition duration-300 close-modal"
+          >
+            Đóng
+          </button>
+        </div>
+      </div>
+    </div>
+    <script id="serviceScript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("comingSoonModal");
+        const closeBtn = modal.querySelector(".close-modal");
+        const serviceLinks = document.querySelectorAll(".service-link");
+        serviceLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+          });
+        });
+        closeBtn.addEventListener("click", function () {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        });
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+          }
+        });
+      });
+    </script>
+    <script id="performanceChartScript">
+      document.addEventListener("DOMContentLoaded", function () {
+        var chartDom = document.getElementById("performanceChart");
+        var myChart = echarts.init(chartDom);
+        var option = {
+          animation: false,
+          color: [
+            "rgba(87, 181, 231, 1)",
+            "rgba(141, 211, 199, 1)",
+            "rgba(251, 191, 114, 1)",
+          ],
+          tooltip: {
+            trigger: "axis",
+            backgroundColor: "rgba(255, 255, 255, 0.8)",
+            textStyle: {
+              color: "#1f2937",
+            },
+          },
+          legend: {
+            data: ["Danh mục tăng trưởng", "Danh mục cân bằng", "Chỉ số VN-Index"],
+            textStyle: {
+              color: "#1f2937",
+            },
+          },
+          grid: {
+            left: "3%",
+            right: "4%",
+            bottom: "3%",
+            top: "15%",
+            containLabel: true,
+          },
+          xAxis: {
+            type: "category",
+            boundaryGap: false,
+            data: [
+              "T1/2024",
+              "T2/2024",
+              "T3/2024",
+              "T4/2024",
+              "T5/2024",
+              "T6/2024",
+              "T7/2024",
+              "T8/2024",
+              "T9/2024",
+              "T10/2024",
+              "T11/2024",
+              "T12/2024",
+            ],
+            axisLine: {
+              lineStyle: {
+                color: "#d1d5db",
+              },
+            },
+            axisLabel: {
+              color: "#4b5563",
+            },
+          },
+          yAxis: {
+            type: "value",
+            axisLine: {
+              lineStyle: {
+                color: "#d1d5db",
+              },
+            },
+            axisLabel: {
+              color: "#4b5563",
+              formatter: "{value}%",
+            },
+            splitLine: {
+              lineStyle: {
+                color: "#e5e7eb",
+              },
+            },
+          },
+          series: [
+            {
+              name: "Danh mục tăng trưởng",
+              type: "line",
+              smooth: true,
+              lineStyle: {
+                width: 3,
+              },
+              symbol: "none",
+              areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  {
+                    offset: 0,
+                    color: "rgba(87, 181, 231, 0.2)",
+                  },
+                  {
+                    offset: 1,
+                    color: "rgba(87, 181, 231, 0.05)",
+                  },
+                ]),
+              },
+              data: [
+                5.2, 7.8, 9.3, 8.5, 12.1, 14.5, 13.8, 16.2, 18.5, 17.3, 19.8, 22.4,
+              ],
+            },
+            {
+              name: "Danh mục cân bằng",
+              type: "line",
+              smooth: true,
+              lineStyle: {
+                width: 3,
+              },
+              symbol: "none",
+              areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  {
+                    offset: 0,
+                    color: "rgba(141, 211, 199, 0.2)",
+                  },
+                  {
+                    offset: 1,
+                    color: "rgba(141, 211, 199, 0.05)",
+                  },
+                ]),
+              },
+              data: [3.8, 5.2, 6.1, 5.7, 8.3, 9.5, 8.9, 10.4, 12.1, 11.5, 13.2, 14.8],
+            },
+            {
+              name: "Chỉ số VN-Index",
+              type: "line",
+              smooth: true,
+              lineStyle: {
+                width: 3,
+              },
+              symbol: "none",
+              areaStyle: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  {
+                    offset: 0,
+                    color: "rgba(251, 191, 114, 0.2)",
+                  },
+                  {
+                    offset: 1,
+                    color: "rgba(251, 191, 114, 0.05)",
+                  },
+                ]),
+              },
+              data: [2.5, 3.1, 4.2, 3.8, 5.6, 6.2, 5.8, 7.1, 8.3, 7.9, 9.2, 10.5],
+            },
+          ],
+        };
+        myChart.setOption(option);
+        window.addEventListener("resize", function () {
+          myChart.resize();
+        });
+      });
+    </script>
     <script>
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
 
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const currentYearEl = document.getElementById('currentYear');
+        if (currentYearEl) {
+            currentYearEl.textContent = new Date().getFullYear();
+        }
+    
+
+        // ===== JAVASCRIPT CHO HIỆU ỨNG PANEL CHI TIẾT (CHUNG) =====
+        function setupDetailPanelInteraction(sectionId, listId, detailId, cardClass, backButtonId, detailFieldsMap) {
+            const sectionEl = document.getElementById(sectionId);
+            const listViewEl = document.getElementById(listId);
+            const detailPanelEl = document.getElementById(detailId);
+            // Sửa selector để chỉ tìm .clickable-card trong listViewEl của section tương ứng
+            const clickableCardsEl = listViewEl ? listViewEl.querySelectorAll(`.${cardClass}`) : []; 
+            const backToListButtonEl = document.getElementById(backButtonId);
+
+            function initializeViewsState() {
+                if (detailPanelEl) {
+                    detailPanelEl.classList.add('hidden-detail-panel');
+                    detailPanelEl.classList.add('hidden'); 
+                    detailPanelEl.classList.remove('visible-detail-panel');
+                }
+                if (listViewEl) {
+                    listViewEl.classList.add('visible-list-panel');
+                    listViewEl.classList.remove('hidden-list-panel');
+                    listViewEl.classList.remove('hidden'); 
+                }
+            }
+            
+            if (sectionEl && listViewEl && detailPanelEl) { // Chỉ gọi nếu các element chính của section tồn tại
+                 initializeViewsState();
+            }
+
+
+            if (clickableCardsEl && clickableCardsEl.length > 0) {
+                clickableCardsEl.forEach(card => {
+                    card.addEventListener('click', () => {
+                        // Populate detail panel
+                        for (const fieldKey in detailFieldsMap) {
+                            const mapping = detailFieldsMap[fieldKey];
+                            if (!mapping || !mapping.elementId) continue; // Bỏ qua nếu mapping không hợp lệ
+
+                            const element = document.getElementById(mapping.elementId);
+                            const dataAttribute = card.dataset[fieldKey];
+                            
+                            if (element) {
+                                if (mapping.isImage) {
+                                    if (dataAttribute && dataAttribute !== "null" && dataAttribute !== "") {
+                                        element.src = dataAttribute;
+                                        element.alt = `Ảnh của ${card.dataset.name || 'Nội dung'}`;
+                                        element.style.display = 'block';
+                                    } else {
+                                        element.src = "https://placehold.co/600x400/d1fae5/065f46?text=Ảnh";
+                                        element.alt = "Không có ảnh";
+                                        element.style.display = 'block';
+                                    }
+                                } else if (mapping.prefix) {
+                                    element.textContent = dataAttribute ? `${mapping.prefix}${dataAttribute}` : '';
+                                } else if (mapping.isQuote) {
+                                     element.textContent = dataAttribute ? `"${dataAttribute}"` : '';
+                                }
+                                else {
+                                    element.textContent = dataAttribute || '';
+                                }
+                            }
+                        }
+
+                        // Switch views
+                        if (listViewEl && detailPanelEl) {
+                            listViewEl.classList.remove('visible-list-panel');
+                            listViewEl.classList.add('hidden-list-panel');
+                            
+                            detailPanelEl.classList.remove('hidden');
+                            detailPanelEl.classList.remove('hidden-detail-panel');
+                            detailPanelEl.classList.add('visible-detail-panel');
+                            
+                            requestAnimationFrame(() => {
+                                if(detailPanelEl.scrollIntoView) {
+                                    detailPanelEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                } else if (sectionEl) {
+                                    window.scrollTo(0, sectionEl.offsetTop);
+                                }
+                            });
+                        }
+                    });
+                });
+            }
+
+
+            if (backToListButtonEl) {
+                backToListButtonEl.addEventListener('click', () => {
+                    if (listViewEl && detailPanelEl) {
+                        detailPanelEl.classList.remove('visible-detail-panel');
+                        detailPanelEl.classList.add('hidden-detail-panel');
+                        
+                        listViewEl.classList.remove('hidden-list-panel');
+                        listViewEl.classList.add('visible-list-panel');
+                        listViewEl.classList.remove('hidden');
+
+                        setTimeout(() => {
+                           if (!detailPanelEl.classList.contains('visible-detail-panel')) {
+                               detailPanelEl.classList.add('hidden');
+                           }
+                        }, 500);
+
+                        const sectionTitle = listViewEl.querySelector('h2');
+                        if (sectionTitle) {
+                            requestAnimationFrame(() => {
+                                if(sectionTitle.scrollIntoView) {
+                                    sectionTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                } else if (sectionEl) {
+                                    window.scrollTo(0, sectionEl.offsetTop);
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+            return function resetView() {
+                if (sectionEl && listViewEl && detailPanelEl) { // Kiểm tra lại các element trước khi reset
+                    initializeViewsState();
+                }
+            };
+        }
+
+        // Thiết lập cho section Khách hàng
+        const resetClientDetailView = setupDetailPanelInteraction(
+            'khach-hang', 
+            'client-list-view', 
+            'client-detail-panel', 
+            'clickable-card', 
+            'back-to-client-list-button', 
+            { 
+                name: { elementId: 'detail-client-name' },
+                birthYear: { elementId: 'detail-client-birth-year', prefix: 'Năm sinh: ' },
+                title: { elementId: 'detail-client-title' },
+                quote: { elementId: 'detail-client-quote', isQuote: true },
+                details: { elementId: 'detail-client-details' },
+                imageSrc: { elementId: 'detail-client-image-actual', isImage: true }
+            }
+        );
+
+        // Thiết lập cho section Đội ngũ phân tích
+        const resetTeamDetailView = setupDetailPanelInteraction(
+            'doi-ngu-phan-tich',
+            'team-list-view',
+            'team-detail-panel',
+            'clickable-card', 
+            'back-to-team-list-button',
+            { 
+                name: { elementId: 'detail-team-name' },
+                age: { elementId: 'detail-team-age', prefix: 'Tuổi: ' },
+                title: { elementId: 'detail-team-title' },
+                bio: { elementId: 'detail-team-bio' },
+                imageSrc: { elementId: 'detail-team-image-actual', isImage: true }
+            }
+        );
+        // ===== KẾT THÚC JAVASCRIPT CHO PANEL CHI TIẾT =====
 
         // Main content section switching
         const navLinks = document.querySelectorAll('.nav-link');
         const heroNavLink = document.querySelector('.nav-link-hero');
         const logoLink = document.getElementById('logo-link');
         const mainContentSections = document.querySelectorAll('.main-content-section');
-        
+         
         function setActiveSection(targetId) {
+            console.log("setActiveSection được gọi với targetId:", targetId); // DEBUG LOG
+
             mainContentSections.forEach(section => {
                 section.classList.remove('active');
             });
@@ -400,8 +1584,13 @@
             });
             
             const targetSection = document.getElementById(targetId);
+            console.log("targetSection tìm thấy:", targetSection); // DEBUG LOG
+
             if (targetSection) {
                 targetSection.classList.add('active');
+                console.log("Đã thêm class 'active' cho:", targetId); // DEBUG LOG
+            } else {
+                console.error("Lỗi: Không tìm thấy section với ID:", targetId);
             }
 
             navLinks.forEach(link => {
@@ -409,17 +1598,28 @@
                     link.classList.add('active');
                 }
             });
+
+            if (targetId !== 'khach-hang' && typeof resetClientDetailView === 'function') {
+                resetClientDetailView();
+            }
+            if (targetId !== 'doi-ngu-phan-tich' && typeof resetTeamDetailView === 'function') {
+                resetTeamDetailView();
+            }
             window.scrollTo(0, 0); 
         }
         
-        navLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault(); 
-                const targetId = link.dataset.target;
-                setActiveSection(targetId);
-                mobileMenu.classList.add('hidden'); 
+        if(navLinks.length > 0) {
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); 
+                    const targetId = link.dataset.target;
+                    setActiveSection(targetId);
+                    if (mobileMenu && mobileMenu.classList) {
+                        mobileMenu.classList.add('hidden'); 
+                    }
+                });
             });
-        });
+        }
 
         if (heroNavLink) {
             heroNavLink.addEventListener('click', (event) => {
@@ -433,6 +1633,12 @@
             logoLink.addEventListener('click', (event) => {
                 event.preventDefault();
                 setActiveSection('hero-section'); 
+                if (typeof resetClientDetailView === 'function') {
+                    resetClientDetailView();
+                }
+                if (typeof resetTeamDetailView === 'function') {
+                    resetTeamDetailView();
+                }
             });
         }
 
@@ -440,12 +1646,18 @@
             const defaultSectionId = 'hero-section'; 
             setActiveSection(defaultSectionId);
 
+             if (typeof resetClientDetailView === 'function') resetClientDetailView();
+             if (typeof resetTeamDetailView === 'function') resetTeamDetailView();
+
+
             const firstStockButton = document.querySelector('#phan-tich-co-phieu .tab-button');
             if(firstStockButton){
                 const onclickAttr = firstStockButton.getAttribute('onclick');
-                const stockIdMatch = onclickAttr ? onclickAttr.match(/'([^']+)'/) : null;
-                if (stockIdMatch && stockIdMatch[1]) {
-                    showStockAnalysis(stockIdMatch[1], firstStockButton);
+                if (onclickAttr) { 
+                    const stockIdMatch = onclickAttr.match(/'([^']+)'/);
+                    if (stockIdMatch && stockIdMatch[1]) {
+                        showStockAnalysis(stockIdMatch[1], firstStockButton);
+                    }
                 }
             }
         });
@@ -453,24 +1665,90 @@
         function showStockAnalysis(stockId, clickedButton) {
             const allContent = document.querySelectorAll('.stock-analysis-content');
             allContent.forEach(content => {
-                content.classList.remove('active');
+                content.classList.remove('active'); 
             });
-
             const allButtons = document.querySelectorAll('#phan-tich-co-phieu .tab-button');
             allButtons.forEach(button => {
                 button.classList.remove('active');
             });
-
             const selectedContent = document.getElementById(stockId);
             if (selectedContent) {
                 selectedContent.classList.add('active');
             }
-
             if (clickedButton) {
                 clickedButton.classList.add('active');
             }
         }
     </script>
+    <script>
+    function showStockContent(stockId, button) {
+        // Ẩn tất cả nội dung của các mã cổ phiếu
+        const contents = document.querySelectorAll('.stock-content');
+        contents.forEach(content => {
+            content.classList.remove('active');
+            content.classList.add('hidden');
+        });
+
+        // Ẩn trạng thái active của tất cả các nút
+        const buttons = document.querySelectorAll('.tab-button');
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Hiển thị nội dung của mã cổ phiếu được chọn
+        const selectedContent = document.getElementById(stockId);
+        if (selectedContent) {
+            selectedContent.classList.remove('hidden');
+            selectedContent.classList.add('active');
+        }
+
+        // Đặt trạng thái active cho nút được nhấp
+        button.classList.add('active');
+    }
+</script>
+
+<style>
+    .stock-content.hidden {
+        display: none;
+    }
+    .stock-content.active {
+        display: block;
+    }
+</style>
+    <script>
+    function showStockAnalysis(stockId, button) {
+        // Ẩn tất cả nội dung phân tích
+        const contents = document.querySelectorAll('.stock-analysis-content');
+        contents.forEach(content => {
+            content.classList.remove('active');
+            content.classList.add('hidden');
+        });
+
+        // Ẩn trạng thái active của tất cả các nút
+        const buttons = document.querySelectorAll('.tab-button');
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Hiển thị nội dung của mã cổ phiếu được chọn
+        const selectedContent = document.getElementById(stockId);
+        if (selectedContent) {
+            selectedContent.classList.remove('hidden');
+            selectedContent.classList.add('active');
+        }
+
+        // Đặt trạng thái active cho nút được nhấp
+        button.classList.add('active');
+    }
+</script>
+
+<style>
+    .stock-analysis-content.hidden {
+        display: none;
+    }
+    .stock-analysis-content.active {
+        display: block;
+    }
 
 </body>
 </html>
